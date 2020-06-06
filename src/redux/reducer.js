@@ -1,25 +1,27 @@
 const initialState = {
   username: "",
-  profile: "",
-  userId: 0,
+  profile_pic: "",
+  id: "",
 };
 
-const actions = {
+export const actions = {
   USER_INFO: "USER_INFO",
 };
 
-export function getUserInfo(username, profile, userId) {
+export function getUserInfo(username, profile_pic, id) {
   return {
     type: actions.USER_INFO,
-    payload: {username, profile, userId},
+    payload: { username, profile_pic, id },
   };
 }
 
-export default function reducer(state = initialState, action) {
-  switch (action.type) {
+export default function (state = initialState, action) {
+  const { type, payload } = action;
+  switch (type) {
     case actions.USER_INFO:
       return {
-       
+        ...state,
+        ...payload,
       };
 
     default:
